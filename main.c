@@ -33,7 +33,7 @@ int multiple_args(char **av)
 	int		i;
 
 	i = 0;
-	list = ft_split(av[1], " ");
+	list = ft_split(av[1], ' ');
 	if (list == NULL)
 		return (invalid_args(av[0]));
 	while (list[i] != NULL)
@@ -72,3 +72,4 @@ int main(int ac, char **av)
 	}
 	return (0);
 }
+
