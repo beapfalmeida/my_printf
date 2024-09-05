@@ -19,11 +19,17 @@ int	invalid_args(char *str);
 void	add_back_list(t_stack **lst, t_stack *new);
 t_stack	*find_last(t_stack *lst);
 t_stack	*new_node(int num);
-void	add_front_list(t_stack **a, t_stack *new);
+//void	add_front_list(t_stack **a, t_stack *new);
 
-//operations
-void	swap(t_stack **a, t_stack *item2, int is_a);
-void	ss(t_stack **a, t_stack *item2);
-void	push(t_stack **a, t_stack **b, int is_a);
+//operations 1
+void	swap(t_stack **stack, int is_a);
+void	ss(t_stack **a, t_stack **b);
+void	push(t_stack **src, t_stack **dest, int is_a);
+void	rotate(t_stack **stack, int is_a);
+void	rr(t_stack	**a, t_stack **b);
+
+//operations 2
+void	reverse_rotate(t_stack **stack, int is_a);
+void	rrr(t_stack **a,  t_stack **b);
 
 #endif

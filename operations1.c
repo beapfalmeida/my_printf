@@ -1,40 +1,70 @@
 #include "push_swap.h"
 
-void swap(t_stack **a, t_stack *item2, int is_a)
+void swap(t_stack **stack, int is_a)
 {
-	if (a)
+	t_stack	*first;
+
+	first = *stack;
+	*stack = (*stack)->next;
+	first->prev = first->next;
+	first->next = first->next->next;
+	(*stack)->prev = NULL;
+	(*stack)->next = first;
+	first->next->prev = first;
+	if (is_a == 1)
+		printf("sa\n");
+	else if (is_a == 0)
+		printf("sb\n");
+}
+void	ss(t_stack **a, t_stack **b)
+{
+	swap(a, 2);
+	swap(b, 2);
+	ft_printf("ss\n");
+}
+
+void	push(t_stack **src, t_stack **dest, int is_a)
+{
+	t_stack *start;
+
+	start = *src;
+	*src = (*src)->next;
+	// se a lista src so tivesse 1 elmento:
+	if (*src)
+		(*src)->prev = NULL;
+	if (*dest)
 	{
-		if (*a)
-		{
-			(*a)->next = item2->next;
-			item2->next = *a;
-		}
-		*a = item2;
+		start->next = *dest;
+		start->next->prev = start;
 	}
-	if (is_a == 1)
-		ft_printf("sa\n");
 	else
-		ft_printf("sb\n");
-}
-void	ss(t_stack **a, t_stack *item2)
-{
-	swap(a, item2, 1);
-	swap(a, item2, 0);
-}
-
-void	push(t_stack **a, t_stack **b, int is_a)
-{
-	t_stack *temp;
-
-	add_front_list(a, *b);
-	temp = (*a)->next;
-	(*a)->next = (*a)->next->next;
-	(*a)->next->prev = *a;
-	temp->n = 0;
-	free(temp);
+		start->next = NULL;
+	*dest = start;
 	if (is_a == 1)
-		printf("pa\n");
-	else
-		printf("pb\n");
+		ft_printf("pa\n");
+	else if (is_a == 0)
+		ft_printf("pb\n");
 }
 
+void	rotate(t_stack **stack, int is_a)
+{
+	t_stack	*last;
+
+	last = find_last(*stack);
+	(*stack)->prev = last;
+	last->next = *stack;
+	*stack = (*stack)->next;
+	last->next->next = NULL;
+	(*stack)->prev = NULL;
+	if (is_a == 1)
+		ft_printf("ra\n");
+	else if (is_a == 0)
+		ft_printf("rb\n");
+}
+
+void	rr(t_stack	**a,  t_stack **b)
+{
+	rotate(a, 2);
+	rotate(b, 2);
+	ft_printf("rr\n");
+}

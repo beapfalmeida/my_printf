@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	free_array(char **arr)
+void	free_arr(char **arr)
 {
 	int	j;
 
@@ -18,7 +18,7 @@ int	handle_args(char **av, int i, char **list)
 
 	if (!ft_atoi(list[i]))
 	{
-		free_array(list);
+		free_arr(list);
 		return (invalid_args(av[0]));
 	}
 	item = new_node(ft_atoi(list[i]));
@@ -41,7 +41,7 @@ int multiple_args(char **av)
 		if (handle_args(av, i, list) == 1)
 			return (1);
 	}
-	free_array(list);
+	free_arr(list);
 	return (0);
 }
 
