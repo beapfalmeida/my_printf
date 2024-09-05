@@ -11,23 +11,25 @@ void	free_arr(char **arr)
 	}
 	free(arr);
 }
-int	handle_args(char **av, int i, char **list)
+int	handle_args(t_stack **stack, int i, char **list)
 {
-	t_stack	*a;
 	t_stack	*item;
-
 	if (!ft_atoi(list[i]))
 	{
 		free_arr(list);
-		return (invalid_args(av[0]));
+		return (1);
 	}
 	item = new_node(ft_atoi(list[i]));
-	add_back_list(&a, item);
+	if (!stack)
+		*stack = item;
+	else
+		add_back_list(stack, item);
 	i++;
 	return (0);
 }
-
-int multiple_args(char **av)
+// nota - o stack esta a ficar preso neste scope,
+// ver se depois nao preciso dele para mais nada
+int multiple_args(t_stack *stack, char **av)
 {
 	char	**list;
 	int		i;
@@ -35,39 +37,34 @@ int multiple_args(char **av)
 	i = 0;
 	list = ft_split(av[1], ' ');
 	if (list == NULL)
-		return (invalid_args(av[0]));
+		return (1);
 	while (list[i] != NULL)
 	{
-		if (handle_args(av, i, list) == 1)
+		if (handle_args(&stack, i, list) == 1)
 			return (1);
+		i++;
 	}
 	free_arr(list);
 	return (0);
 }
 
-int	invalid_args(char *str)
-{
-	ft_printf("Please provide a list of numbers:\n");
-	ft_printf("%s ""51 ... 28 3""", str);
-	ft_printf("%s 51 ... 28 3", str);
-	return (1);
-}
-
 int main(int ac, char **av)
 {
 	int	i;
+	t_stack *stack = NULL;
 
 	i = 1;
 	if (ac == 1)
-		return (invalid_args(av[0]));
+		return (1);
 	else if (ac == 2)
-		return (multiple_args(av));
+		return (multiple_args(stack, av));
 	else
 	{
-		while (i < ac - 1)
+		while (i < ac)
 		{
-			if (handle_args(av, i, av) == 1)
+			if (handle_args(&stack, i, av) == 1)
 				return (1);
+			i++;
 		}
 	}
 	return (0);

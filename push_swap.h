@@ -11,9 +11,8 @@ typedef struct stack
 	struct stack	*prev;
 }	t_stack;
 
-int	handle_args(char **av, int i, char **list);
-int multiple_args(char **av);
-int	invalid_args(char *str);
+int	handle_args(t_stack **stack, int i, char **list);
+int multiple_args(t_stack *stack, char **av);
 
 //handle lists
 void	add_back_list(t_stack **lst, t_stack *new);

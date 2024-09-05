@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wextra -Wall -Werror -g
 NAME = push_swap
 LIBFT_DIR = libft
 LIBFT_A = $(LIBFT_DIR)/libft.a
