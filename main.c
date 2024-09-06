@@ -17,6 +17,7 @@ int	handle_args(t_stack **stack, int i, char **list)
 	if (!ft_atoi(list[i]))
 	{
 		free_arr(list);
+		ft_printf("Error\n");
 		return (1);
 	}
 	item = new_node(ft_atoi(list[i]));
@@ -29,7 +30,7 @@ int	handle_args(t_stack **stack, int i, char **list)
 }
 // nota - o stack esta a ficar preso neste scope,
 // ver se depois nao preciso dele para mais nada
-int multiple_args(t_stack *stack, char **av)
+int parse_handle_args(t_stack *stack, char **av)
 {
 	char	**list;
 	int		i;
@@ -45,6 +46,8 @@ int multiple_args(t_stack *stack, char **av)
 		i++;
 	}
 	free_arr(list);
+	if (!is_sorted(stack))
+		sort(&stack);
 	return (0);
 }
 
@@ -57,7 +60,7 @@ int main(int ac, char **av)
 	if (ac == 1)
 		return (1);
 	else if (ac == 2)
-		return (multiple_args(stack, av));
+		return (parse_handle_args(stack, av));
 	else
 	{
 		while (i < ac)
@@ -66,6 +69,8 @@ int main(int ac, char **av)
 				return (1);
 			i++;
 		}
+		if (!is_sorted(stack))
+			sort(&stack);
 	}
 	return (0);
 }
