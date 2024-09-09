@@ -14,10 +14,11 @@ typedef struct stack
 int	handle_args(t_stack **stack, int i, char **list);
 int parse_handle_args(t_stack *stack, char **av);
 
-//handle lists
+//list utils
 void	add_back_list(t_stack **lst, t_stack *new);
 t_stack	*find_last(t_stack *lst);
 t_stack	*new_node(int num);
+void	lstclear(t_stack **lst);
 
 //sort
 int	is_sorted(t_stack *a);

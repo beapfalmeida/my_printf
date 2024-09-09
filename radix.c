@@ -104,4 +104,5 @@ void	sort(t_stack **a)
 		sort_5(a);
 	else if (size > 5)
 		sort_big(a);
+	lstclear(a);
 }

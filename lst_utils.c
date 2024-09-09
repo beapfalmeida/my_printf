@@ -1,14 +1,5 @@
 #include "push_swap.h"
 
-void	add_front_list(t_stack **a, t_stack *new)
-{
-	if (a)
-	{
-		if (*a)
-			new->next = *a;
-		*a = new;
-	}
-}
 void	add_back_list(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
@@ -40,11 +31,26 @@ t_stack	*new_node(int num)
 {
 	t_stack	*node;
 
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->n = num;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
+}
+
+void	lstclear(t_stack **lst)
+{
+	t_stack	*temp;
+
+	if (!*lst)
+		return ;
+	while (*lst)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		temp->n = 0;
+		free(temp);
+	}
 }

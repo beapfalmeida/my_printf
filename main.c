@@ -48,6 +48,8 @@ int parse_handle_args(t_stack *stack, char **av)
 	free_arr(list);
 	if (!is_sorted(stack))
 		sort(&stack);
+	else
+		lstclear(&stack);
 	return (0);
 }
 
@@ -71,6 +73,8 @@ int main(int ac, char **av)
 		}
 		if (!is_sorted(stack))
 			sort(&stack);
+		else
+			lstclear(&stack);
 	}
 	return (0);
 }
