@@ -22,6 +22,7 @@ void	add_back_list(t_stack **lst, t_stack *new)
 	}
 	last = find_last(*lst);
 	last -> next = new;
+	new -> prev = last;
 }
 
 t_stack	*find_last(t_stack *lst)

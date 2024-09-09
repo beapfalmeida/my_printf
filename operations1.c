@@ -8,9 +8,10 @@ void swap(t_stack ***stack, int is_a)
 	**stack = (**stack)->next;
 	first->prev = first->next;
 	first->next = first->next->next;
+	if (first->next)
+		first->next->prev = first;
 	(**stack)->prev = NULL;
 	(**stack)->next = first;
-	first->next->prev = first;
 	if (is_a == 1)
 		printf("sa\n");
 	else if (is_a == 0)

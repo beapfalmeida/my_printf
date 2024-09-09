@@ -4,7 +4,7 @@ int	is_sorted(t_stack *a)
 {
 	if (a->next == NULL)
 		exit(1);
-	while (a)
+	while (a->next)
 	{
 		if (a->n > a->next->n)
 			return 0;
@@ -29,7 +29,18 @@ int	count_stack(t_stack *a)
 		i++;
 		a = a->next;
 	}
-	return (i);
+	return (i); 
+}
+#include <stdio.h>
+#include <string.h>
+void	print_list(t_stack **begin_list)
+{
+	t_stack *cur = *begin_list;
+	while (cur != 0)
+	{
+		printf("%d\n", (int)(cur->n));
+		cur = cur->next;
+	}
 }
 
 void	sort_3(t_stack **a)
@@ -41,8 +52,12 @@ void	sort_3(t_stack **a)
 		reverse_rotate(&a, 1);
 	}
 	else if ((*a)->n > (*a)->next->n
-		&& (*a)->next->n < (*a)->next->next->n)
-		rotate(&a, 1);
+		&& (*a)->n > (*a)->next->next->n)
+		{
+			rotate(&a, 1);
+			if ((*a)->n > (*a)->next->n)
+				swap(&a, 1);
+		}
 	else if ((*a)->n > (*a)->next->n
 		&& (*a)->n < (*a)->next->next->n)
 		swap(&a, 1);
@@ -52,9 +67,10 @@ void	sort_3(t_stack **a)
 	else if ((*a)->n < (*a)->next->n
 		&& (*a)->n < (*a)->next->next->n)
 	{
-		rotate(&a, 1);
+		reverse_rotate(&a, 1);
 		swap(&a, 1);
 	}
+	//print_list(a);
 }
 
 void	sort_4(t_stack **a)
