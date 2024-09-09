@@ -17,7 +17,7 @@ void	put_index(t_stack **stack, int index)
 		{
 			while (k && k->index)
 				k= k->next;
-			k->index = index;
+			k->index = index - 1;
 			return ;
 		}
 		while (k && k->next && k->next->next)
@@ -43,7 +43,7 @@ void	put_index(t_stack **stack, int index)
 			if (j == 0)
 				break ;
 		}
-		k->index = index;
+		k->index = index - 1;
 		index++;
 	}
 }
