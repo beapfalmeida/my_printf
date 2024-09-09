@@ -31,17 +31,6 @@ int	count_stack(t_stack *a)
 	}
 	return (i); 
 }
-#include <stdio.h>
-#include <string.h>
-void	print_list(t_stack **begin_list)
-{
-	t_stack *cur = *begin_list;
-	while (cur != 0)
-	{
-		printf("%d\n", (int)(cur->n));
-		cur = cur->next;
-	}
-}
 
 void	sort_3(t_stack **a)
 {
@@ -75,6 +64,15 @@ void	sort_3(t_stack **a)
 
 void	sort_4(t_stack **a)
 {
+	// t_stack *b;
+	// t_stack	*temp;
+
+	// temp = *a;
+	// b = new_node(0);
+	
+	// push(a, b, 0);
+
+	// lstclear(b);
 	(void)a;
 }
 void	sort_5(t_stack **a)

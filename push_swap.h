@@ -7,18 +7,21 @@
 typedef struct stack
 {
 	int	n;
+	int index;
 	struct stack	*next;
 	struct stack	*prev;
 }	t_stack;
 
 int	handle_args(t_stack **stack, int i, char **list);
 int parse_handle_args(t_stack *stack, char **av);
+void	put_index(t_stack **stack, int index);
 
 //list utils
 void	add_back_list(t_stack **lst, t_stack *new);
 t_stack	*find_last(t_stack *lst);
 t_stack	*new_node(int num);
 void	lstclear(t_stack **lst);
+void	zero_index(t_stack **stack);
 
 //sort
 int	is_sorted(t_stack *a);
@@ -39,5 +42,9 @@ void	rr(t_stack	****a, t_stack ****b);
 //operations 2
 void	reverse_rotate(t_stack ***stack, int is_a);
 void	rrr(t_stack ****a,  t_stack ****b);
+
+//test
+void	print_list(t_stack **begin_list);
+void	print_index(t_stack **begin_list);
 
 #endif

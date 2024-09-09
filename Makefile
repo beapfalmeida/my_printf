@@ -5,7 +5,7 @@ LIBFT_DIR = libft
 LIBFT_A = $(LIBFT_DIR)/libft.a
 FT_PRINTF_DIR = $(LIBFT_DIR)/ft_printf
 FT_PRINTF_A = $(FT_PRINTF_DIR)/ft_printf.a
-SRC = operations1.c operations2.c main.c lst_utils.c radix.c
+SRC = operations1.c operations2.c main.c lst_utils.c radix.c prints.c
 OBJ = $(SRC:.c=.o)
 
 all: libft $(NAME)

@@ -54,3 +54,15 @@ void	lstclear(t_stack **lst)
 		free(temp);
 	}
 }
+
+void	zero_index(t_stack **stack)
+{
+	t_stack	*temp;
+
+	temp = *stack;
+	while (temp)
+	{
+		temp->index = 0;
+		temp = temp->next;
+	}
+}
