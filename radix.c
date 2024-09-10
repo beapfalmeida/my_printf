@@ -1,24 +1,5 @@
 #include "push_swap.h"
 
-int	is_sorted(t_stack *a)
-{
-	if (a->next == NULL)
-		exit(1);
-	while (a->next)
-	{
-		if (a->n > a->next->n)
-			return 0;
-		else if (a->n == a->next->n)
-		{
-			ft_printf("Error\n");
-			exit(1);
-		}
-		else
-			a = a->next;
-	}
-	return (1);
-}
-
 int	count_stack(t_stack *a)
 {
 	int	i;
@@ -59,7 +40,6 @@ void	sort_3(t_stack **a)
 		reverse_rotate(&a, 1);
 		swap(&a, 1);
 	}
-	//print_list(a);
 }
 
 void	sort_4(t_stack **a)

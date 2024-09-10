@@ -14,7 +14,7 @@ typedef struct stack
 
 int	handle_args(t_stack **stack, int i, char **list);
 int parse_handle_args(t_stack *stack, char **av);
-void	put_index(t_stack **stack, int index);
+void	put_index(t_stack **stack);
 
 //list utils
 void	add_back_list(t_stack **lst, t_stack *new);
@@ -23,9 +23,11 @@ t_stack	*new_node(int num);
 void	lstclear(t_stack **lst);
 void	zero_index(t_stack **stack);
 
-//sort
+//checker
+int	has_duplicates(t_stack *a);
 int	is_sorted(t_stack *a);
-int	count_stack(t_stack *a);
+
+//sort
 void	sort(t_stack **a);
 void	sort_3(t_stack **a);
 void	sort_4(t_stack **a);
