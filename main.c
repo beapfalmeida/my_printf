@@ -87,10 +87,12 @@ void	free_arr(char **arr)
 int	handle_args(t_stack **stack, int i, char **list, int is_av)
 {
 	t_stack	*item;
-	if (!ft_atoi(list[i]) && list[i] != '0')
+	if (!is_num(list[i]))
 	{
 		if (!is_av)
 			free_arr(list);
+		if (stack)
+			lstclear(stack);
 		ft_printf("Error\n");
 		return (1);
 	}

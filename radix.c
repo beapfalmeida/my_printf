@@ -53,7 +53,7 @@ void	sort_4(t_stack **a)
 	ptr_b = &b;
 	print_index(a);
 	if (temp->index == 0)
-		push(a, ptr_b, 1);
+		push(a, ptr_b, 0);
 	else
 	{
 		if (temp->next->next->next->index == 0)
@@ -63,10 +63,10 @@ void	sort_4(t_stack **a)
 			rotate(a, 1);
 			temp = temp->next;
 		}
-		push(a, ptr_b, 1);
+		push(a, ptr_b, 0);
 	}
 	sort_3(a);
-	push(ptr_b, a, 0);
+	push(ptr_b, a, 1);
 	if (ptr_b)
 		lstclear(ptr_b);
 }

@@ -33,3 +33,17 @@ int	is_sorted(t_stack *a)
 	}
 	return (1);
 }
+
+int	is_num(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == 43 || str[i] == 45)
+		i++;
+	while (str[i + 1] && str[i] >= 48 && str[i] <= 57)
+		i++;
+	if (str[i] < '0' || str[i] >'9')
+		return (0);
+	return (1);
+}

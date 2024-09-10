@@ -27,6 +27,7 @@ void	zero_index(t_stack **stack);
 //checker
 int	has_duplicates(t_stack *a);
 int	is_sorted(t_stack *a);
+int	is_num(const char *str);
 
 //sort
 int		count_stack(t_stack *a);
