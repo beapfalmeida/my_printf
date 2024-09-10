@@ -7,8 +7,8 @@
 
 typedef struct stack
 {
-	int	n;
-	int index;
+	int				n;
+	int 			index;
 	struct stack	*next;
 	struct stack	*prev;
 }	t_stack;
@@ -59,5 +59,6 @@ void	rrr(t_stack **a,  t_stack **b);
 //test
 void	print_list(t_stack **begin_list);
 void	print_index(t_stack **begin_list);
+void	print_bits(unsigned int octet);
 
 #endif

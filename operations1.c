@@ -26,20 +26,25 @@ void	ss(t_stack **a, t_stack **b)
 void	push(t_stack **src, t_stack **dest, int is_a)
 {
 	t_stack *start;
+	t_stack *node;
 
 	start = *src;
 	*src = (*src)->next;
 	// se a lista src so tivesse 1 elmento
-	if (*src)
+	if (src && *src)
 		(*src)->prev = NULL;
-	if (*dest)
+	if (dest && *dest)
 	{
 		start->next = *dest;
 		start->next->prev = start;
+		*dest = start;
 	}
 	else
+	{
 		start->next = NULL;
-	*dest = start;
+		node = start;
+		add_back_list(dest, node);
+	}
 	if (is_a == 1)
 		ft_printf("pa\n");
 	else

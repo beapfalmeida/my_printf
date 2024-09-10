@@ -94,8 +94,36 @@ void	sort_5(t_stack **a)
 
 void	sort_big(t_stack **a)
 {
-	(void)a;
+	t_stack *b = NULL;
+	int	n;
+	int	i;
+	int j;
+
+	j = 0;
+	n = count_stack(*a);
+	int max_bits = 0;
+	while ((n >> max_bits) != 0)
+		max_bits++;
+	while (j < max_bits)
+	{
+		i = 0;
+		while (i < n)
+		{
+			if (((((*a)->index) >> j) & 1) == 1)
+				rotate(a, 1);
+			else
+				push(a, &b, 0);
+			i++;
+		}
+		if (b)
+			push(&b, a, 1);
+		while (b)
+			push(&b, a, 1);
+		j++;
+	}
+	lstclear(&b);
 }
+
 void	sort(t_stack **a)
 {
 	int	size;

@@ -59,7 +59,7 @@ int	handle_args(t_stack **stack, int i, char **list, int is_av)
 	t_stack	*item;
 	long	content;
 	if (!is_num(list[i]))
-		goodbye(stack, list, is_av);
+		return(goodbye(stack, list, is_av));
 	content = ft_atol(list[i]);
 	if (!bigger_max_min(content))
 	{
@@ -71,7 +71,7 @@ int	handle_args(t_stack **stack, int i, char **list, int is_av)
 		i++;
 	}
 	else
-		goodbye(stack, list, is_av);
+		return(goodbye(stack, list, is_av));
 	return (0);
 }
 // nota - o stack esta a ficar preso neste scope,
