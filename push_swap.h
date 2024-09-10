@@ -33,7 +33,7 @@ int	is_num(const char *str);
 int		count_stack(t_stack *a);
 void	sort(t_stack **a);
 void	sort_3(t_stack **a);
-void	sort_4(t_stack **a);
+void	sort_4(t_stack **a, int i);
 void	sort_5(t_stack **a);
 void	sort_big(t_stack **a);
 
