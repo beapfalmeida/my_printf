@@ -1,44 +1,75 @@
 #include "push_swap.h"
 
-void	insert_index(t_stack **stack)
+void	insert_index(t_stack **stack, t_stack **new)
 {
 	t_stack *temp;
+	t_stack	*temp_new;
 	int	i;
+	int size;
 
 	i = 0;
+	temp_new = *new;
+	size = count_stack(*stack);
 	temp = *stack;
-	while (temp)
+	while (i < size)
 	{
-		temp->index = i;
-		temp = temp->next;
+		temp = *stack;
+		while (temp && temp->n != (*new)->n)
+			temp = temp->next;
+		if (temp)
+		{
+			temp->index = i;
+			*new = (*new)->next;
+		}
 		i++;
 	}
+	lstclear(&temp_new);
 }
+t_stack	*copy_struct(t_stack *stack)
+{
+	t_stack *temp;
+	t_stack	*new;
+	t_stack	*item;
 
+	new = NULL;
+	temp = stack;
+	while (temp)
+	{
+		item = new_node(temp->n);
+		if (!new)
+			new = item;
+		else
+			add_back_list(&new, item);
+		temp = temp->next;
+	}
+	return (new);
+}
 void	put_index(t_stack **stack)
 {
 	int	buffer;
-	t_stack *temp1 = NULL;
-	t_stack	*temp2 = NULL;
+	t_stack *temp1;
+	t_stack	*temp;
+	t_stack *new;
 
-	temp2 = *stack;
-	temp1 = (*stack)->next;
-	while (temp2 && temp2->next)
+	new = copy_struct(*stack);
+	temp = new;
+	temp1 = new->next;
+	while (temp && temp->next)
 	{
 		while (temp1)
 		{
-			if (temp2->n > temp1->n)
+			if (temp->n > temp1->n)
 			{
-				buffer = temp2->n;
-				temp2->n = temp1->n;
+				buffer = temp->n;
+				temp->n = temp1->n;
 				temp1->n = buffer;
 			}
 			temp1 = temp1->next;
 		}
-		temp2 = temp2->next;
-		temp1 = temp2->next;
+		temp = temp->next;
+		temp1 = temp->next;
 	}
-	insert_index(stack);
+	insert_index(stack, &new);
 	//print_index(stack);
 }
 

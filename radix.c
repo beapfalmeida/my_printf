@@ -44,16 +44,31 @@ void	sort_3(t_stack **a)
 
 void	sort_4(t_stack **a)
 {
-	// t_stack *b;
-	// t_stack	*temp;
+	t_stack **ptr_b;
+	t_stack *b;
+	t_stack	*temp;
 
-	// temp = *a;
-	// b = new_node(0);
-	
-	// push(a, b, 0);
-
-	// lstclear(b);
-	(void)a;
+	temp = *a;
+	b = new_node(0);
+	ptr_b = &b;
+	print_index(a);
+	if (temp->index == 0)
+		push(&a, &ptr_b, 1);
+	else
+	{
+		if (temp->next->next->next->index == 0)
+			reverse_rotate(&a, 1);
+		while(temp && temp->index != 0)
+		{
+			rotate(&a, 1);
+			temp = temp->next;
+		}
+		push(&a, &ptr_b, 1);
+	}
+	sort_3(a);
+	push(&ptr_b, &a, 0);
+	// if (ptr_b)
+	// 	lstclear(ptr_b);
 }
 void	sort_5(t_stack **a)
 {
