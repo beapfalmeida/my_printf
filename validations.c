@@ -28,11 +28,6 @@ int	is_sorted(t_stack *a)
 	{
 		if (a->n > a->next->n)
 			return (0);
-		else if (a->n == a->next->n)
-		{
-			ft_printf("Error\n");
-			return(1);
-		}
 		else
 			a = a->next;
 	}

@@ -1,71 +1,70 @@
 #include "push_swap.h"
 
-void swap(t_stack ***stack, int is_a)
+void swap(t_stack **stack, int is_a)
 {
 	t_stack	*first;
 
-	first = **stack;
-	**stack = (**stack)->next;
+	first = *stack;
+	*stack = (*stack)->next;
 	first->prev = first->next;
 	first->next = first->next->next;
-	if (first->next)
-		first->next->prev = first;
-	(**stack)->prev = NULL;
-	(**stack)->next = first;
+	(*stack)->prev = NULL;
+	(*stack)->next = first;
+	first->next->prev = first;
 	if (is_a == 1)
 		printf("sa\n");
-	else if (is_a == 0)
+	else
 		printf("sb\n");
 }
-void	ss(t_stack ****a, t_stack ****b)
+void	ss(t_stack **a, t_stack **b)
 {
-	swap(*a, 2);
-	swap(*b, 2);
+	swap(a, 2);
+	swap(b, 2);
 	ft_printf("ss\n");
 }
 
-void	push(t_stack ***src, t_stack ***dest, int is_a)
+void	push(t_stack **src, t_stack **dest, int is_a)
 {
-	t_stack **start;
+	t_stack *start;
 
 	start = *src;
-	**src = (**src)->next;
-	// se a lista src so tivesse 1 elmento:
-	if (**src)
-		(**src)->prev = NULL;
-	if (**dest)
+	*src = (*src)->next;
+	// se a lista src so tivesse 1 elmento
+	if (*src)
+		(*src)->prev = NULL;
+	if (*dest)
 	{
-		(*start)->next = **dest;
-		(*start)->next->prev = *start;
+		start->next = *dest;
+		start->next->prev = start;
 	}
 	else
-		(*start)->next = NULL;
-	**dest = *start;
+		start->next = NULL;
+	*dest = start;
 	if (is_a == 1)
 		ft_printf("pa\n");
-	else if (is_a == 0)
+	else
 		ft_printf("pb\n");
 }
 
-void	rotate(t_stack ***stack, int is_a)
+void	rotate(t_stack **a, int is_a)
 {
 	t_stack	*last;
 
-	last = find_last(**stack);
-	(**stack)->prev = last;
-	last->next = **stack;
-	**stack = (**stack)->next;
+	last = find_last(*a);
+	(*a)->prev = last;
+	last->next = *a;
+	*a = (*a)->next;
 	last->next->next = NULL;
-	(**stack)->prev = NULL;
+	(*a)->prev = NULL;
 	if (is_a == 1)
 		ft_printf("ra\n");
-	else if (is_a == 0)
+	else
 		ft_printf("rb\n");
 }
 
-void	rr(t_stack	****a,  t_stack ****b)
+void	rr(t_stack	**a,  t_stack **b)
 {
-	rotate(*a, 2);
-	rotate(*b, 2);
+	rotate(a, 2);
+	rotate(b, 2);
 	ft_printf("rr\n");
 }

@@ -84,12 +84,13 @@ void	free_arr(char **arr)
 	}
 	free(arr);
 }
-int	handle_args(t_stack **stack, int i, char **list)
+int	handle_args(t_stack **stack, int i, char **list, int is_av)
 {
 	t_stack	*item;
-	if (!ft_atoi(list[i]))
+	if (!ft_atoi(list[i]) && list[i] != '0')
 	{
-		free_arr(list);
+		if (!is_av)
+			free_arr(list);
 		ft_printf("Error\n");
 		return (1);
 	}
@@ -114,7 +115,7 @@ int parse_handle_args(t_stack *stack, char **av)
 		return (1);
 	while (list[i] != NULL)
 	{
-		if (handle_args(&stack, i, list) == 1)
+		if (handle_args(&stack, i, list, 0) == 1)
 			return (1);
 		i++;
 	}
@@ -144,7 +145,7 @@ int main(int ac, char **av)
 	{
 		while (i < ac)
 		{
-			if (handle_args(&stack, i, av) == 1)
+			if (handle_args(&stack, i, av, 1) == 1)
 				return (1);
 			i++;
 		}

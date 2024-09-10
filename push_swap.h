@@ -12,8 +12,8 @@ typedef struct stack
 	struct stack	*prev;
 }	t_stack;
 
-int	handle_args(t_stack **stack, int i, char **list);
-int parse_handle_args(t_stack *stack, char **av);
+int		handle_args(t_stack **stack, int i, char **list, int is_av);
+int		parse_handle_args(t_stack *stack, char **av);
 void	put_index(t_stack **stack);
 void	insert_index(t_stack **stack, t_stack **new);
 
@@ -37,15 +37,15 @@ void	sort_5(t_stack **a);
 void	sort_big(t_stack **a);
 
 //operations 1
-void	swap(t_stack ***stack, int is_a);
-void	ss(t_stack ****a, t_stack ****b);
-void	push(t_stack ***src, t_stack ***dest, int is_a);
-void	rotate(t_stack ***stack, int is_a);
-void	rr(t_stack	****a, t_stack ****b);
+void	swap(t_stack **stack, int is_a);
+void	ss(t_stack **a, t_stack **b);
+void	push(t_stack **src, t_stack **dest, int is_a);
+void	rotate(t_stack **stack, int is_a);
+void	rr(t_stack	**a, t_stack **b);
 
 //operations 2
-void	reverse_rotate(t_stack ***stack, int is_a);
-void	rrr(t_stack ****a,  t_stack ****b);
+void	reverse_rotate(t_stack **stack, int is_a);
+void	rrr(t_stack **a,  t_stack **b);
 
 //test
 void	print_list(t_stack **begin_list);
