@@ -22,3 +22,4 @@ void	rrr(t_stack **a, t_stack **b)
 	reverse_rotate(b, 2);
 	ft_printf("rrr");
 }
+

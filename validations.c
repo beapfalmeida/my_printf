@@ -47,3 +47,11 @@ int	is_num(const char *str)
 		return (0);
 	return (1);
 }
+
+int	bigger_max_min(long n)
+{
+	if (n < INT_MIN || n > INT_MAX)
+		return (1);
+	return (0);
+}
+

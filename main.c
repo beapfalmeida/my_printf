@@ -25,25 +25,6 @@ void	insert_index(t_stack **stack, t_stack **new)
 	}
 	lstclear(&temp_new);
 }
-t_stack	*copy_struct(t_stack *stack)
-{
-	t_stack *temp;
-	t_stack	*new;
-	t_stack	*item;
-
-	new = NULL;
-	temp = stack;
-	while (temp)
-	{
-		item = new_node(temp->n);
-		if (!new)
-			new = item;
-		else
-			add_back_list(&new, item);
-		temp = temp->next;
-	}
-	return (new);
-}
 void	put_index(t_stack **stack)
 {
 	int	buffer;
@@ -73,35 +54,24 @@ void	put_index(t_stack **stack)
 	//print_index(stack);
 }
 
-void	free_arr(char **arr)
-{
-	int	j;
-
-	j = 0;
-	while (arr[j] != NULL)
-	{
-		free(arr[j++]);
-	}
-	free(arr);
-}
 int	handle_args(t_stack **stack, int i, char **list, int is_av)
 {
 	t_stack	*item;
+	long	content;
 	if (!is_num(list[i]))
+		goodbye(stack, list, is_av);
+	content = ft_atol(list[i]);
+	if (!bigger_max_min(content))
 	{
-		if (!is_av)
-			free_arr(list);
-		if (stack)
-			lstclear(stack);
-		ft_printf("Error\n");
-		return (1);
+		item = new_node(content);
+		if (!stack)
+			*stack = item;
+		else
+			add_back_list(stack, item);
+		i++;
 	}
-	item = new_node(ft_atoi(list[i]));
-	if (!stack)
-		*stack = item;
 	else
-		add_back_list(stack, item);
-	i++;
+		goodbye(stack, list, is_av);
 	return (0);
 }
 // nota - o stack esta a ficar preso neste scope,
@@ -136,9 +106,11 @@ int parse_handle_args(t_stack *stack, char **av)
 int main(int ac, char **av)
 {
 	int	i;
+	int big;
 	t_stack *stack = NULL;
 
 	i = 1;
+	big = 0;
 	if (ac == 1)
 		return (1);
 	else if (ac == 2)
@@ -151,6 +123,7 @@ int main(int ac, char **av)
 				return (1);
 			i++;
 		}
+		//big = bigger_max_min(stack);
 		if (!is_sorted(stack) && !has_duplicates(stack))
 		{
 			put_index(&stack);

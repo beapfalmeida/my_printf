@@ -3,6 +3,7 @@
 
 # include "libft/libft.h"
 # include "libft/ft_printf/ft_printf.h"
+# include <limits.h>
 
 typedef struct stack
 {
@@ -25,9 +26,16 @@ void	lstclear(t_stack **lst);
 void	zero_index(t_stack **stack);
 
 //checker
-int	has_duplicates(t_stack *a);
-int	is_sorted(t_stack *a);
-int	is_num(const char *str);
+int		has_duplicates(t_stack *a);
+int		is_sorted(t_stack *a);
+int		is_num(const char *str);
+int		bigger_max_min(long n);
+
+//utils
+long	ft_atol(const char *str);
+t_stack	*copy_struct(t_stack *stack);
+void	free_arr(char **arr);
+int		goodbye(t_stack **stack, char **list, int is_av);
 
 //sort
 int		count_stack(t_stack *a);
