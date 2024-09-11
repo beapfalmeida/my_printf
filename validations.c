@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validations.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 15:33:16 by bpaiva-f          #+#    #+#             */
+/*   Updated: 2024/09/11 15:39:10 by bpaiva-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	has_duplicates(t_stack *a)
 {
-	t_stack *b;
+	t_stack	*b;
+
 	while (a->next)
 	{
 		b = a->next;
@@ -11,7 +24,7 @@ int	has_duplicates(t_stack *a)
 			if (a->n == b->n)
 			{
 				ft_printf("Error\n");
-				return(1);
+				return (1);
 			}
 			b = b->next;
 		}
@@ -43,7 +56,7 @@ int	is_num(const char *str)
 		i++;
 	while (str[i + 1] && str[i] >= 48 && str[i] <= 57)
 		i++;
-	if (str[i] < '0' || str[i] >'9')
+	if (str[i] < '0' || str[i] > '9')
 		return (0);
 	return (1);
 }
@@ -54,4 +67,3 @@ int	bigger_max_min(long n)
 		return (1);
 	return (0);
 }
-

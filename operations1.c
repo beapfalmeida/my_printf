@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 15:34:27 by bpaiva-f          #+#    #+#             */
+/*   Updated: 2024/09/11 15:35:09 by bpaiva-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void swap(t_stack **stack, int is_a)
+void	swap(t_stack **stack, int is_a)
 {
 	t_stack	*first;
 
@@ -12,10 +24,11 @@ void swap(t_stack **stack, int is_a)
 	(*stack)->next = first;
 	first->next->prev = first;
 	if (is_a == 1)
-		printf("sa\n");
+		ft_printf("sa\n");
 	else
-		printf("sb\n");
+		ft_printf("sb\n");
 }
+
 void	ss(t_stack **a, t_stack **b)
 {
 	swap(a, 2);
@@ -25,12 +38,11 @@ void	ss(t_stack **a, t_stack **b)
 
 void	push(t_stack **src, t_stack **dest, int is_a)
 {
-	t_stack *start;
-	t_stack *node;
+	t_stack	*start;
+	t_stack	*node;
 
 	start = *src;
 	*src = (*src)->next;
-	// se a lista src so tivesse 1 elmento
 	if (src && *src)
 		(*src)->prev = NULL;
 	if (dest && *dest)
@@ -67,7 +79,7 @@ void	rotate(t_stack **a, int is_a)
 		ft_printf("rb\n");
 }
 
-void	rr(t_stack	**a,  t_stack **b)
+void	rr(t_stack	**a, t_stack **b)
 {
 	rotate(a, 2);
 	rotate(b, 2);

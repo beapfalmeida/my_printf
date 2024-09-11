@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 15:33:25 by bpaiva-f          #+#    #+#             */
+/*   Updated: 2024/09/11 15:36:00 by bpaiva-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -8,7 +20,7 @@
 typedef struct stack
 {
 	int				n;
-	int 			index;
+	int				index;
 	struct stack	*next;
 	struct stack	*prev;
 }	t_stack;
@@ -54,7 +66,9 @@ void	rr(t_stack	**a, t_stack **b);
 
 //operations 2
 void	reverse_rotate(t_stack **stack, int is_a);
-void	rrr(t_stack **a,  t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
+void	check_and_sort(t_stack **stack);
+void	radix(t_stack **a, t_stack *b, int j, int n);
 
 //test
 void	print_list(t_stack **begin_list);

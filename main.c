@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 15:33:08 by bpaiva-f          #+#    #+#             */
+/*   Updated: 2024/09/11 15:41:13 by bpaiva-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	insert_index(t_stack **stack, t_stack **new)
 {
-	t_stack *temp;
+	t_stack	*temp;
 	t_stack	*temp_new;
-	int	i;
-	int size;
+	int		i;
+	int		size;
 
 	i = 0;
 	temp_new = *new;
@@ -25,12 +37,13 @@ void	insert_index(t_stack **stack, t_stack **new)
 	}
 	lstclear(&temp_new);
 }
+
 void	put_index(t_stack **stack)
 {
-	int	buffer;
-	t_stack *temp1;
+	int		buffer;
+	t_stack	*temp1;
 	t_stack	*temp;
-	t_stack *new;
+	t_stack	*new;
 
 	new = copy_struct(*stack);
 	temp = new;
@@ -51,15 +64,15 @@ void	put_index(t_stack **stack)
 		temp1 = temp->next;
 	}
 	insert_index(stack, &new);
-	//print_index(stack);
 }
 
 int	handle_args(t_stack **stack, int i, char **list, int is_av)
 {
 	t_stack	*item;
 	long	content;
+
 	if (!is_num(list[i]))
-		return(goodbye(stack, list, is_av));
+		return (goodbye(stack, list, is_av));
 	content = ft_atol(list[i]);
 	if (!bigger_max_min(content))
 	{
@@ -71,12 +84,11 @@ int	handle_args(t_stack **stack, int i, char **list, int is_av)
 		i++;
 	}
 	else
-		return(goodbye(stack, list, is_av));
+		return (goodbye(stack, list, is_av));
 	return (0);
 }
-// nota - o stack esta a ficar preso neste scope,
-// ver se depois nao preciso dele para mais nada
-int parse_handle_args(t_stack *stack, char **av)
+
+int	parse_handle_args(t_stack *stack, char **av)
 {
 	char	**list;
 	int		i;
@@ -92,23 +104,17 @@ int parse_handle_args(t_stack *stack, char **av)
 		i++;
 	}
 	free_arr(list);
-	if (!is_sorted(stack) && !has_duplicates(stack))
-	{
-		zero_index(&stack);
-		put_index(&stack);
-		sort(&stack);
-	}
-	else
-		lstclear(&stack);
+	check_and_sort(&stack);
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int	i;
-	int big;
-	t_stack *stack = NULL;
+	int		i;
+	int		big;
+	t_stack	*stack;
 
+	stack = NULL;
 	i = 1;
 	big = 0;
 	if (ac == 1)
@@ -123,15 +129,7 @@ int main(int ac, char **av)
 				return (1);
 			i++;
 		}
-		//big = bigger_max_min(stack);
-		if (!is_sorted(stack) && !has_duplicates(stack))
-		{
-			put_index(&stack);
-			sort(&stack);
-		}
-		else
-			lstclear(&stack);
+		check_and_sort(&stack);
 	}
 	return (0);
 }
-

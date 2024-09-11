@@ -1,8 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 15:33:21 by bpaiva-f          #+#    #+#             */
+/*   Updated: 2024/09/11 15:36:57 by bpaiva-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+int	count_stack(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (a)
+	{
+		i++;
+		a = a->next;
+	}
+	return (i);
+}
 
 long	ft_atol(const char *str)
 {
-	int	i;
+	int		i;
 	long	sign;
 	long	result;
 
@@ -42,7 +67,7 @@ void	free_arr(char **arr)
 
 t_stack	*copy_struct(t_stack *stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 	t_stack	*new;
 	t_stack	*item;
 
@@ -60,12 +85,12 @@ t_stack	*copy_struct(t_stack *stack)
 	return (new);
 }
 
-int goodbye(t_stack **stack, char **list, int is_av)
+int	goodbye(t_stack **stack, char **list, int is_av)
 {
 	if (!is_av)
-			free_arr(list);
-		if (stack)
-			lstclear(stack);
-		ft_printf("Error\n");
-		return (1);
+		free_arr(list);
+	if (stack)
+		lstclear(stack);
+	ft_printf("Error\n");
+	return (1);
 }
