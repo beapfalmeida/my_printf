@@ -6,7 +6,7 @@
 /*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:33:16 by bpaiva-f          #+#    #+#             */
-/*   Updated: 2024/09/11 15:39:10 by bpaiva-f         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:49:37 by bpaiva-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	has_duplicates(t_stack *a)
 int	is_sorted(t_stack *a)
 {
 	if (a->next == NULL)
-		exit(1);
+		return (1);
 	while (a->next)
 	{
 		if (a->n > a->next->n)

@@ -35,7 +35,7 @@ fclean: clean
 
 libclean:
 	rm -rf 	$(LIBFT_DIR)
-	
+
 visualizer:
 	git clone https://github.com/o-reo/push_swap_visualizer.git && \
 	cd push_swap_visualizer && \

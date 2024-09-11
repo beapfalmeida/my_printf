@@ -6,7 +6,7 @@
 /*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:34:27 by bpaiva-f          #+#    #+#             */
-/*   Updated: 2024/09/11 15:35:09 by bpaiva-f         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:46:19 by bpaiva-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	swap(t_stack **stack, int is_a)
 	first->next = first->next->next;
 	(*stack)->prev = NULL;
 	(*stack)->next = first;
-	first->next->prev = first;
+	if (first->next)
+		first->next->prev = first;
 	if (is_a == 1)
 		ft_printf("sa\n");
 	else
