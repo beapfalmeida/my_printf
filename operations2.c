@@ -6,7 +6,7 @@
 /*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:33:30 by bpaiva-f          #+#    #+#             */
-/*   Updated: 2024/09/11 15:34:10 by bpaiva-f         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:23:59 by bpaiva-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,19 @@ void	rrr(t_stack **a, t_stack **b)
 
 void	check_and_sort(t_stack **stack)
 {
-	if (!is_sorted(*stack) && !has_duplicates(*stack))
+	if (has_duplicates(*stack))
+	{
+		lstclear(stack);
+		ft_printf("Error\n");
+	}
+	else if (is_sorted(*stack))
+		lstclear(stack);
+	else
 	{
 		zero_index(stack);
 		put_index(stack);
 		sort(stack);
 	}
-	else
-		lstclear(stack);
 }
 
 void	radix(t_stack **a, t_stack *b, int j, int n)

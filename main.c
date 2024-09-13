@@ -6,7 +6,7 @@
 /*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:33:08 by bpaiva-f          #+#    #+#             */
-/*   Updated: 2024/09/11 15:41:13 by bpaiva-f         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:02:04 by bpaiva-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,12 @@ int	parse_handle_args(t_stack *stack, char **av)
 
 	i = 0;
 	list = ft_split(av[1], ' ');
-	if (list == NULL)
+	if (!list || !*list)
+	{
+		if (list)
+			free(list);
 		return (1);
+	}
 	while (list[i] != NULL)
 	{
 		if (handle_args(&stack, i, list, 0) == 1)

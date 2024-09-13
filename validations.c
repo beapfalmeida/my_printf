@@ -6,7 +6,7 @@
 /*   By: bpaiva-f <bpaiva-f@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:33:16 by bpaiva-f          #+#    #+#             */
-/*   Updated: 2024/09/11 16:49:37 by bpaiva-f         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:27:49 by bpaiva-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int	has_duplicates(t_stack *a)
 		while (b)
 		{
 			if (a->n == b->n)
-			{
-				ft_printf("Error\n");
 				return (1);
-			}
 			b = b->next;
 		}
 		a = a->next;
